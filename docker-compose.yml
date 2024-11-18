@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    volumes:
+      - ./frontend:/app
+      - frontend-node-modules:/app/node_modules
+      - frontend-next:/app/.next
+    ports:
+      - "${EXPOSE_APP_PORT}:3000"
+    tty: true
+
+volumes:
+  frontend-node-modules:
+  frontend-next:
