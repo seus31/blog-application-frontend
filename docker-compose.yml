@@ -6,13 +6,14 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
     volumes:
-      - ./frontend:/app
+      - ./src:/app
       - blog-application-frontend-node-modules:/app/node_modules
       - blog-application-frontend-next:/app/.next
     networks:
       - blog-application-frontend-network
     ports:
       - "${EXPOSE_APP_PORT}:3000"
+    command: npm run dev
     tty: true
 
 networks:
